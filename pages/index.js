@@ -1,82 +1,68 @@
-import Head from 'next/head'
+import Head from "next/head";
+import DogLike from "../components/DogLike";
+import { HomeHeader } from "../components/HomeHeader";
+import { SignInCard } from "../components/SignInCard/SignInCard";
+import { UploadCard } from "../components/UploadCard/UploadCard";
+import SearchIcon from "../icons/Search";
 
 export default function Home() {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen py-2">
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+    <>
+      <div className="flex flex-col items-center justify-center min-h-screen py-2">
+        <Head>
+          <title>dogLikes🐶</title>
+        </Head>
 
-      <main className="flex flex-col items-center justify-center w-full flex-1 px-20 text-center">
-        <h1 className="text-6xl font-bold">
-          Welcome to{' '}
-          <a className="text-blue-600" href="https://nextjs.org">
-            Next.js!
-          </a>
-        </h1>
+        <main className="container mx-auto flex flex-col items-start justify-start mt-12 w-full flex-1 text-center">
+          <HomeHeader />
 
-        <p className="mt-3 text-2xl">
-          Get started by editing{' '}
-          <code className="p-3 font-mono text-lg bg-gray-100 rounded-md">
-            pages/index.js
-          </code>
-        </p>
+          <section className="sign_section">
+            <div className="flex flex-col gap-5 items-start justify-center mt-10 sm:flex-row">
+              <UploadCard />
+              <SignInCard />
+            </div>
+          </section>
+        </main>
+        <section className="container mx-auto">
+          <h2 className="text-5xl font-mono font-bold mt-14">latest dogs🐕</h2>
+          <hr className="separator" />
+          <div className="mt-9 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-3 gap-5">
+            <DogLike
+              avatarURL="https://images.unsplash.com/photo-1493666438817-866a91353ca9?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&s=b616b2c5b373a80ffc9636ba24f7a4a9"
+              imageURL="https://www.happets.com/blog/wp-content/uploads/2019/09/al-agua-perros-guia-de-playas-dogfriendly-en-espana--1180x787.jpg"
+              dogName="Sparky"
+              quote="Here with may friench at the beeach!"
+              location="Fv-Canary Islands"
+            />
+            <DogLike
+              avatarURL="https://randomuser.me/api/portraits/men/32.jpg"
+              imageURL="https://s3.amazonaws.com/cdn-origin-etr.akc.org/wp-content/uploads/2018/11/27135515/Grooming-tips-from-experts-hero.jpg"
+              dogName="Donna"
+              quote="Soy una perrrraaa!"
+              location="Zimbabue"
+            />
+            <DogLike
+              avatarURL="https://randomuser.me/api/portraits/men/35.jpg"
+              imageURL="https://www.thesprucepets.com/thmb/3-ISVJpCrp9TUfeRdH1mfzJlHGg=/960x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/golden-retriever-puppy-in-grass-923135452-5c887d4146e0fb00013365ba.jpg"
+              dogName="Pituka"
+              quote="Yoqsetio xdxd"
+              location="Jerez de la Frontera, Andalucía"
+            />
+          </div>
+        </section>
+      </div>
 
-        <div className="flex flex-wrap items-center justify-around max-w-4xl mt-6 sm:w-full">
-          <a
-            href="https://nextjs.org/docs"
-            className="p-6 mt-6 text-left border w-96 rounded-xl hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Documentation &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Find in-depth information about Next.js features and API.
-            </p>
-          </a>
+      <style jsx>{`
+        .separator {
+          width: 10%;
+          margin-top: 20px;
+          border: 5px solid black;
+        }
 
-          <a
-            href="https://nextjs.org/learn"
-            className="p-6 mt-6 text-left border w-96 rounded-xl hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Learn &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Learn about Next.js in an interactive course with quizzes!
-            </p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className="p-6 mt-6 text-left border w-96 rounded-xl hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Examples &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Discover and deploy boilerplate example Next.js projects.
-            </p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className="p-6 mt-6 text-left border w-96 rounded-xl hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Deploy &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
-      </main>
-
-      <footer className="flex items-center justify-center w-full h-24 border-t">
-        <a
-          className="flex items-center justify-center"
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className="h-4 ml-2" />
-        </a>
-      </footer>
-    </div>
-  )
+        .sign_section {
+          margin-top: 40px;
+        }
+      `}</style>
+    </>
+  );
 }
