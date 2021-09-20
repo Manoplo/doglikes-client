@@ -11,18 +11,15 @@ export default function DogLike({
   return (
     <div>
       <div className="rounded overflow-hidden border-2 hover:shadow-lg">
-        <div className="px-4 py-4 flex items-center">
+        <div className="py-4 flex items-center">
           <div>
-            <img
-              className="rounded-full max-w-full max-h-full  sm:w-12 h-12"
-              src={avatarURL}
-            />
+            <img className="rounded-full w-16 sm:w-12" src={avatarURL} />
           </div>
           <div className="ml-4">
-            <p className="font-bold">jorgemesa</p>
+            <p className="font-bold">{userName}</p>
           </div>
 
-          <p className="ml-24 sm:ml-48">10 min ago</p>
+          <p className="ml-24 sm:ml-48">{createdAt}</p>
         </div>
         <img src={imageURL} alt={dogName} className="w-full" />
         <div className="px-6 py-4">

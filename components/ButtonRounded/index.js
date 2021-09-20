@@ -35,7 +35,7 @@ export default function ButtonRounded({ children, onClick, disabled }) {
             margin-right: 8px;
           }
 
-          button:hover >:global(span){
+          button:hover > :global(span) {
             opacity: 1;
           }
 

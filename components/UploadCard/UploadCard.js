@@ -12,7 +12,7 @@ export const UploadCard = () => {
 
         <ButtonRounded className="btn">
           <Dog height={50} />
-          <span>&uarr;</span>
+          <span>+</span>
         </ButtonRounded>
       </section>
       <style jsx>{`
