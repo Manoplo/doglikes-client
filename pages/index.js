@@ -8,6 +8,7 @@ import DogLikeForm from "../components/DogLikeForm";
 
 export default function Home() {
   const [timeLine, setTimeline] = useState([]);
+  const [user, setUser] = useState("Pepito");
 
   useEffect(() => {
     fetch("http://localhost:8080/api/doglikes")
@@ -30,7 +31,16 @@ export default function Home() {
 
           <section className="sign_section w-full">
             <div className="flex flex-col gap-5 items-start justify-center mt-10 sm:flex-row">
-              <DogLikeForm />
+              {user ? (
+                <div>
+                  <h1 className="font-mono font-bold text-4xl">
+                    Bienvenido,{user}
+                  </h1>
+                  <DogLikeForm />
+                </div>
+              ) : (
+                <SignInCard />
+              )}
             </div>
           </section>
         </main>

@@ -1,38 +1,44 @@
 import Button from "../Button";
-import ButtonRounded from "../ButtonRounded";
-import Dog from "../../icons/Dog";
+
 import { useState } from "react";
 
 export default function DogLikeForm() {
-  const [data, setData] = useState({});
-
-  const composition = {
-    avatar:
-      "https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/127888424/original/808ab52e6e9d78214bda893ecf1d14353f426a4b/draw-pet-cartoon-portrait-avatar-social-media-pet-in-24-hrs.png",
-    username: "pepitoperez",
+  const [data, setData] = useState({
+    avatar: "https://uifaces.co/our-content/donated/2bvuFyb8.jpg",
+    username: "username",
     dog_url:
-      "https://media.npr.org/assets/img/2021/08/06/dog-4415649-18eab39206426b985f7a5f69e3146a2cd1a56c0d-s800-c85.webp",
+      "https://ichef.bbci.co.uk/news/976/cpsprodpb/169A8/production/_120248529_gettyimages-157037529.jpg",
     dogname: "",
     quote: "",
     location: "",
-  };
+  });
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    fetch("http://localhost:8080/api/doglikes", {
+      method: "post",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+
+      body: JSON.stringify({
+        ...data,
+      }),
+    })
+      .then((res) => console.log(res))
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
-  const handleName = (e) => {
-    composition.dogname = e.target.value;
+  const handleInputChange = (e) => {
+    setData({
+      ...data,
+      // Propiedad computada, toma la propiedad "name" de cada input sin tener que hacer varios handleInputChange.
+      [e.target.name]: e.target.value,
+    });
   };
-  const handleQuote = (e) => {
-    composition.quote = e.target.value;
-  };
-
-  const handleLocation = (e) => {
-    composition.location = e.target.value;
-  };
-
-  console.log(composition);
 
   return (
     <div>
@@ -53,7 +59,7 @@ export default function DogLikeForm() {
             </label>
             <input
               type="text"
-              onChange={handleName}
+              onChange={handleInputChange}
               placeholder="Dog´s name here!"
               name="dogname"
               required
@@ -61,7 +67,7 @@ export default function DogLikeForm() {
             />
             <input
               type="text"
-              onChange={handleQuote}
+              onChange={handleInputChange}
               placeholder="What´s your dog thinking in this pic?"
               name="quote"
               className="mt-4 border-b-2 border-gray focus:outline-none focus:border-b-2 focus:border-black font-mono"
@@ -70,7 +76,7 @@ export default function DogLikeForm() {
             <input
               type="text"
               placeholder="Where are you from?"
-              onChange={handleLocation}
+              onChange={handleInputChange}
               name="location"
               className="mt-4 border-b-2 border-gray focus:outline-none focus:border-b-2 focus:border-black font-mono"
             />
